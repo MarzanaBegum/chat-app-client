@@ -1,20 +1,61 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        primary: "Manrope, Public Sans, sans-serif",
+      },
+      colors: {
+        "primary-lighter": "#C8FACD",
+        "primary-light": "#5BE584",
+        "primary-main": "#0162C4",
+        "primary-dark": "#007B55",
+        "primary-darker": "#005249",
+        "secondary-lighter": "#D6E4FF",
+        "secondary-light": "#84A9FF",
+        "secondary-main": "#3366FF",
+        "secondary-dark": "#1939B7",
+        "secondary-darker": "#091A7A",
+        "info-lighter": "#D0F2FF",
+        "info-light": "#74CAFF",
+        "info-main": "#1890FF",
+        "info-dark": "#0C53B7",
+        "info-darker": "#04297A",
+        "success-lighter": "#E9FCD4",
+        "success-light": "#AAF27F",
+        "success-main": "#54D62C",
+        "success-dark": "#229A16",
+        "success-darker": "#08660D",
+        "warning-lighter": "#FFF7CD",
+        "warning-light": "#FFE16A",
+        "warning-main": "#FFC107",
+        "warning-dark": "#B78103",
+        "warning-darker": "#7A4F01",
+        "error-lighter": "#FFE7D9",
+        "error-light": "#FFA48D",
+        "error-main": "#FF4842",
+        "error-dark": "#B72136",
+        "error-darker": "#7A0C2E",
+      },
+      screens: {
+        xs: "375px",
+        sm: "680px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1200px",
+        "2xl": "1440px",
+        "3xl": "1680px",
+        "4xl": "1920px",
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
