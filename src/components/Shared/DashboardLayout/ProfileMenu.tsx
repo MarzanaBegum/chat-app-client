@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import ToggleButton from "../Shared/ToggleButton";
+import ToggleButton from "../ToggleButton";
 
 const ProfileMenu = () => {
   return (

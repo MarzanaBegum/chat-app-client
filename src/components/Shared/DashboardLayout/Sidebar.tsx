@@ -5,7 +5,7 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import classNames from "classnames";
-import ProfileMenu from "../ProfileMenu";
+import ProfileMenu from "./ProfileMenu";
 
 const Sidebar = () => {
   const pathName = usePathname();

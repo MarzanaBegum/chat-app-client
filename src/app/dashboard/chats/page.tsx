@@ -1,6 +1,6 @@
 import Chats from "@/components/Dashboard/Chats";
 import Conversation from "@/components/Dashboard/Conversation";
-import DashboardLayout from "@/components/Dashboard/DashboardLayout";
+import DashboardLayout from "@/components/Shared/DashboardLayout";
 import React from "react";
 
 const InitialChatPage = () => {

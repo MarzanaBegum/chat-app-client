@@ -1,12 +1,12 @@
 import { Chat_History } from "@/utils/constants";
 import classNames from "classnames";
 import React from "react";
-import TimeLine from "./TimeLine";
-import TextMsg from "./TextMsg";
-import MediaMsg from "./MediaMsg";
-import ReplyMsg from "./ReplyMsg";
-import LinkMsg from "./LinkMsg";
-import DocMsg from "./DocMsg";
+import TimeLine from "./MessagesType/TimeLine";
+import TextMsg from "./MessagesType/TextMsg";
+import MediaMsg from "./MessagesType/MediaMsg";
+import ReplyMsg from "./MessagesType/ReplyMsg";
+import LinkMsg from "./MessagesType/LinkMsg";
+import DocMsg from "./MessagesType/DocMsg";
 
 const Messages = () => {
   return (
