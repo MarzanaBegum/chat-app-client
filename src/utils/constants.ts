@@ -1,7 +1,9 @@
+import Avatar from "@/components/CustomIcons/Avatar";
 import CallIcon from "@/components/CustomIcons/CallIcon";
 import CaretDownIcon from "@/components/CustomIcons/CaretDownIcon";
 import ChatsIcon from "@/components/CustomIcons/ChatsIcon";
 import GroupIcon from "@/components/CustomIcons/GroupIcon";
+import LogoutIcon from "@/components/CustomIcons/LogoutIcon";
 import PhoneIcon from "@/components/CustomIcons/PhoneIcon";
 import SearchIcon from "@/components/CustomIcons/SearchIcon";
 import SettingIcon from "@/components/CustomIcons/SettingIcon";
@@ -23,6 +25,65 @@ export const sidebarNavListItems = [
   {
     Icon: SettingIcon,
     link: "/dashboard/settings",
+  },
+];
+
+export const profileMenu = [
+  {
+    Icon: Avatar,
+    title: "Profile",
+  },
+  {
+    Icon: SettingIcon,
+    title: "Settings",
+  },
+  {
+    Icon: LogoutIcon,
+    title: "Logout",
+  },
+];
+
+export const message_options = [
+  {
+    title: "Reply",
+  },
+  {
+    title: "React to message",
+  },
+  {
+    title: "Forward message",
+  },
+  {
+    title: "Star message",
+  },
+  {
+    title: "Report",
+  },
+  {
+    title: "Delete Message",
+  },
+];
+
+export const speedDialData = [
+  {
+    icon: "/icons/user-avatar.svg",
+    title: "Photo/Video",
+  },
+  {
+    icon: "/icons/blank-file.svg",
+    title: "Stickers",
+  },
+  {
+    icon: "/icons/camera.svg",
+    title: "Image",
+  },
+  {
+    icon: "/icons/sticker.svg",
+    title: "Document",
+  },
+  {
+    icon: "/icons/picture-icon.svg",
+    title: "Contact",
   },
 ];
 
@@ -130,6 +191,7 @@ export const iconsList = [
 
 export const Chat_History = [
   {
+    id: 0,
     type: "msg",
     message: "Hi 👋🏻, How are ya ?",
     incoming: true,
@@ -140,18 +202,21 @@ export const Chat_History = [
     text: "Today",
   },
   {
+    id: 1,
     type: "msg",
     message: "Hi 👋 Panda, not bad, u ?",
     incoming: false,
     outgoing: true,
   },
   {
+    id: 2,
     type: "msg",
     message: "Can you send me an abstarct image?",
     incoming: false,
     outgoing: true,
   },
   {
+    id: 3,
     type: "msg",
     message: "Ya sure, sending you a pic",
     incoming: true,
@@ -159,6 +224,7 @@ export const Chat_History = [
   },
 
   {
+    id: 4,
     type: "msg",
     subtype: "img",
     message: "Here You Go",
@@ -167,6 +233,7 @@ export const Chat_History = [
     outgoing: false,
   },
   {
+    id: 5,
     type: "msg",
     message: "Can you please send this in file format?",
     incoming: false,
@@ -174,6 +241,7 @@ export const Chat_History = [
   },
 
   {
+    id: 6,
     type: "msg",
     subtype: "doc",
     message: "Yes sure, here you go.",
@@ -181,6 +249,7 @@ export const Chat_History = [
     outgoing: false,
   },
   {
+    id: 7,
     type: "msg",
     subtype: "link",
     preview: "/assets/images/media-img.svg",
@@ -189,6 +258,7 @@ export const Chat_History = [
     outgoing: false,
   },
   {
+    id: 8,
     type: "msg",
     subtype: "reply",
     reply: "This is a reply",

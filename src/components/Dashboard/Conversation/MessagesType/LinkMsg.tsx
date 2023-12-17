@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 const LinkMsg = ({ element }: any) => {
-  console.log(element.preview, "sdfksdflskdfj");
   return (
     <div
       className={classNames(

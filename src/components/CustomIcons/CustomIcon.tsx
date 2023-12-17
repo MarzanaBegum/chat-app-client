@@ -26,8 +26,9 @@ function CustomIcon({ svg, height, width, color, stroke, className }: IconType &
       width: width || defaultIconProps.width,
       color: color || defaultIconProps.color,
       stroke: stroke || defaultIconProps.stroke,
+      className: className || defaultIconProps.className,
     };
-  }, [height, width, color, stroke]);
+  }, [height, width, color, stroke, className]);
 
   return <>{svg(iconProps)}</>;
 }

@@ -1,10 +1,13 @@
+import { ActionTypes } from "@/Context/ActionTypes";
+import { useStateContext } from "@/Context/StateContext";
 import { iconsList } from "@/utils/constants";
 import Image from "next/image";
 import React from "react";
 
 const ConversationHeader = () => {
+  const { state, dispatch } = useStateContext();
   return (
-    <div className="h-[80px] bg-[#F8FAFF] dark:bg-[#111b21] shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
+    <div className="z-[99] h-[80px] bg-[#F8FAFF] dark:bg-[#111b21] shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
       <div className="px-[33px] py-[16px] flex justify-between items-center">
         <div>
           <div className="flex gap-[17px]">
@@ -14,6 +17,13 @@ const ConversationHeader = () => {
                 alt="avatar"
                 width={47}
                 height={47}
+                className="cursor-pointer"
+                onClick={() => {
+                  dispatch({
+                    type: ActionTypes.OPEN_SIDEBAR,
+                    payload: { isOpen: !state.sideBar.isOpen, type: "CONTACT" },
+                  });
+                }}
               />
               <div className="w-[9px] h-[9px] absolute right-0 top-[35px] bg-[#76D45E] rounded-full"></div>
             </div>
@@ -33,7 +43,7 @@ const ConversationHeader = () => {
               key={i + "icon"}
               className="cursor-pointer last:border-l last:border-l-[#B4B4B4] last:pl-[18px]"
             >
-              <Icon />
+              <Icon stroke="#4B4B4B" width="24" height="24" />
             </div>
           ))}
         </div>

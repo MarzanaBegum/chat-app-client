@@ -11,7 +11,7 @@ const Sidebar = () => {
   const pathName = usePathname();
   return (
     <>
-      <div className="min-h-screen w-[110px] hide-scroll bg-[#F0F4FA] dark:bg-[#161C24] flex justify-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
+      <div className="z-[99] min-h-screen w-[110px] hide-scroll bg-[#F0F4FA] dark:bg-[#161C24] flex justify-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
         <div className="flex flex-col justify-between gap-[20px] py-[25px]">
           <div>
             <div className="bg-[#AFBBF7] cursor-pointer rounded-xl w-16 h-16 flex justify-center items-center">
@@ -40,6 +40,8 @@ const Sidebar = () => {
                       )}
                     >
                       <item.Icon
+                        width={24}
+                        height={24}
                         stroke={item.link === pathName ? "#FFFFFF" : "#080707"}
                       />
                     </div>
@@ -48,9 +50,7 @@ const Sidebar = () => {
               ))}
             </div>
           </div>
-          <div>
-            <ProfileMenu />
-          </div>
+          <ProfileMenu />
         </div>
       </div>
     </>

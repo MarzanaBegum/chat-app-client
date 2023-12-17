@@ -7,6 +7,7 @@ import MediaMsg from "./MessagesType/MediaMsg";
 import ReplyMsg from "./MessagesType/ReplyMsg";
 import LinkMsg from "./MessagesType/LinkMsg";
 import DocMsg from "./MessagesType/DocMsg";
+import MessageOptions from "./MessageOptions/MessageOptions";
 
 const Messages = () => {
   return (
@@ -18,23 +19,18 @@ const Messages = () => {
             className={classNames(
               ele.incoming ? "justify-start" : "justify-end",
               ele.type === "divider" && "justify-center",
-              "flex"
+              "flex items-start gap-2"
             )}
           >
-            {ele.type === "msg" && <TextMsg element={ele} />}
-            {/* {ele.type === "msg" && ele.subtype === "img" && (
-              <MediaMsg element={ele} />
-            )} */}
-            {/* {ele.type === "msg" && ele.subtype === "reply" && (
-              <ReplyMsg element={ele} />
-            )} */}
-            {/* {ele.type === "msg" && ele.subtype === "link" && (
-              <LinkMsg element={ele} />
-            )} */}
-            {/* {ele.type === "msg" && ele.subtype === "doc" && (
-              <DocMsg element={ele} />
-            )} */}
+            {ele.subtype
+              ? (ele.subtype === "reply" && <ReplyMsg element={ele} />) ||
+                (ele.subtype === "doc" && <DocMsg element={ele} />) ||
+                (ele.subtype === "link" && <LinkMsg element={ele} />) ||
+                (ele.subtype === "img" && <MediaMsg element={ele} />)
+              : ele.type === "msg" && <TextMsg element={ele} />}
+
             {ele.type === "divider" && <TimeLine element={ele} />}
+            {ele.type !== "divider" && <MessageOptions item={ele} />}
           </div>
         ))}
       </div>

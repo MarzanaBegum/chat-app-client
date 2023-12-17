@@ -6,7 +6,7 @@ const TextMsg = ({ element }: any) => {
     <div
       className={classNames(
         element.incoming ? "bg-[#FFFFFF] dark:bg-[#161C24]" : "bg-[#5B96F7]",
-        "px-4 max-w-[40%] py-[7px] rounded-2xl"
+        "px-4 max-w-[40%] py-[7px] rounded-lg"
       )}
     >
       <span

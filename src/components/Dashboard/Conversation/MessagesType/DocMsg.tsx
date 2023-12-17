@@ -7,7 +7,7 @@ const DocMsg = ({ element }: any) => {
     <div
       className={classNames(
         element.incoming ? "bg-[#FFFFFF] dark:bg-[#161C24]" : "bg-[#5B96F7]",
-        "px-4 py-[8px] rounded-2xl"
+        "px-4 py-[8px] rounded-lg"
       )}
     >
       <div className="flex gap-[22px] justify-between items-center">
