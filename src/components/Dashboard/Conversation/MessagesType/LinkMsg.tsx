@@ -8,7 +8,7 @@ const LinkMsg = ({ element }: any) => {
     <div
       className={classNames(
         element.incoming ? "bg-[#FFFFFF] dark:bg-[#161C24]" : "bg-[#5B96F7]",
-        "px-4 max-w-[40%] py-[9px] rounded-lg"
+        "px-4 max-w-[70%] py-[9px] rounded-lg"
       )}
     >
       <Image

@@ -21,8 +21,9 @@ const ChatElement = (chatElementData: any) => {
                 <Image
                   src="/assets/images/avatar.png"
                   alt="avatar"
-                  width={47}
-                  height={47}
+                  width="47"
+                  height="47"
+                  className="w-[47px] h-[47px]"
                 />
                 <div className="w-[9px] h-[9px] absolute right-0 top-[35px] bg-[#76D45E] rounded-full"></div>
               </div>
@@ -30,8 +31,9 @@ const ChatElement = (chatElementData: any) => {
               <Image
                 src="/assets/images/avatar.png"
                 alt="avatar"
-                width={47}
-                height={47}
+                width="47"
+                height="47"
+                className="w-[47px] h-[47px]"
               />
             )}
             <div>

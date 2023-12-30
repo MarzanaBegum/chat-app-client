@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import ConversationHeader from "./ConversationHeader";
 import Messages from "./Messages";
@@ -7,8 +8,8 @@ const Conversation = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <ConversationHeader />
-      <Messages />
-      <MessageBar/>
+      <Messages menu={true} />
+      <MessageBar />
     </div>
   );
 };

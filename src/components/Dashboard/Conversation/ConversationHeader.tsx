@@ -15,9 +15,9 @@ const ConversationHeader = () => {
               <Image
                 src="/assets/images/avatar.png"
                 alt="avatar"
-                width={47}
-                height={47}
-                className="cursor-pointer"
+                width="47"
+                height="47"
+                className="cursor-pointer w-[47px] h-[47px]"
                 onClick={() => {
                   dispatch({
                     type: ActionTypes.OPEN_SIDEBAR,

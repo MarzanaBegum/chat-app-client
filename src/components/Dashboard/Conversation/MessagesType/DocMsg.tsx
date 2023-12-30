@@ -11,7 +11,7 @@ const DocMsg = ({ element }: any) => {
       )}
     >
       <div className="flex gap-[22px] justify-between items-center">
-        <Image src="/icons/image-ico.svg" alt="img" width={49} height={49} />
+        <Image src="/icons/image-icon.svg" alt="img" width={49} height={49} />
         <h2
           className={classNames(
             element.incoming ? "text-[#696969] dark:text-[#c5c2c2]" : "text-[#FFFFFF]",

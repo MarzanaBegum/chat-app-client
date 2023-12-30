@@ -6,7 +6,7 @@ const ReplyMsg = ({ element }: any) => {
     <div
       className={classNames(
         element.incoming ? "bg-[#FFFFFF] dark:bg-[#161C24]" : "bg-[#5B96F7]",
-        "px-4 max-w-[40%] py-[9px] rounded-2xl"
+        "px-4 max-w-[60%] py-[9px] rounded-2xl"
       )}
     >
       <div

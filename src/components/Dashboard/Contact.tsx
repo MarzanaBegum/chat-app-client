@@ -10,11 +10,19 @@ import VideoCamIcon from "@/components/CustomIcons/VideoCamIcon";
 import NotificationToggle from "@/components/Shared/NotificationToggle";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import BlockOrDeleteModal from "../Modal/BlockOrDeleteModal";
 
 const Contact = () => {
   const { theme, setTheme } = useTheme();
   const { state, dispatch } = useStateContext();
+  const [openDelete, setOpenDelete] = useState(false);
+  const [openBlock, setOpenBlock] = useState(false);
+
+  const handleBlockChat = () => {};
+
+  const handleDeleteChat = () => {};
+
   return (
     <div className="w-[320px] bg-[#F8FAFF] h-screen dark:bg-[#182229]">
       <div className="flex gap-[18px] h-[80px]  px-[20px] items-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
@@ -34,7 +42,7 @@ const Contact = () => {
         </h2>
       </div>
       <div className="hide-scroll h-[86vh] px-[20px]">
-        <div className="flex items-center gap-[35px] mt-[32px]">
+        <div className="flex items-center gap-4 mt-[32px]">
           <Image
             src="/assets/images/avatar.png"
             className="rounded-full object-cover"
@@ -168,7 +176,10 @@ const Contact = () => {
           </div>
         </div>
         <div className="flex justify-center gap-[20px] mt-[41px] pb-[32px]">
-          <button className="w-[130px] flex justify-center items-center gap-[11px] h-[48px] text-[15px] font-bold text-[#5B96F7] border border-[#5B96F7] rounded-[8px]">
+          <button
+            onClick={() => setOpenBlock(true)}
+            className="w-[130px] flex justify-center items-center gap-[11px] h-[48px] text-[15px] font-bold text-[#5B96F7] border border-[#5B96F7] rounded-[8px] focus:outline-none"
+          >
             <Image
               src="/icons/block-icon.svg"
               alt="block"
@@ -177,12 +188,31 @@ const Contact = () => {
             />
             Block
           </button>
-          <button className="w-[130px] flex justify-center items-center gap-[11px] h-[48px] text-[15px] font-bold text-[#5B96F7] border border-[#5B96F7] rounded-[8px]">
+          <button
+            onClick={() => setOpenDelete(true)}
+            className="w-[130px] flex justify-center items-center gap-[11px] h-[48px] text-[15px] font-bold text-[#5B96F7] border border-[#5B96F7] rounded-[8px] focus:outline-none"
+          >
             <Image src="/icons/trash.svg" alt="block" width={24} height={24} />
             Delete
           </button>
         </div>
       </div>
+      <BlockOrDeleteModal
+        title="Block"
+        isOpen={openBlock}
+        handleOnClose={() => {
+          setOpenBlock(false);
+        }}
+        handleOnClick={handleBlockChat}
+      />
+      <BlockOrDeleteModal
+        title="Delete"
+        isOpen={openDelete}
+        handleOnClose={() => {
+          setOpenDelete(false);
+        }}
+        handleOnClick={handleDeleteChat}
+      />
     </div>
   );
 };

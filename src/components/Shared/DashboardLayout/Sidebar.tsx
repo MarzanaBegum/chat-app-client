@@ -14,16 +14,15 @@ const Sidebar = () => {
       <div className="z-[99] min-h-screen w-[110px] hide-scroll bg-[#F0F4FA] dark:bg-[#161C24] flex justify-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
         <div className="flex flex-col justify-between gap-[20px] py-[25px]">
           <div>
-            <div className="bg-[#AFBBF7] cursor-pointer rounded-xl w-16 h-16 flex justify-center items-center">
-              <Image
-                src="/assets/images/logo.ico"
-                alt="logo"
-                width={37}
-                height={37}
-                priority
-              />
-            </div>
-            <div className="mt-[48px] flex flex-col gap-6 items-center">
+            <Image
+              src="/icons/whatsapp.svg"
+              alt="logo"
+              width="60"
+              height="60"
+              priority
+              className="w-[60px] h-[60px]"
+            />
+            <div className="mt-[15px] flex flex-col gap-6 items-center">
               {sidebarNavListItems.map((item, index) => (
                 <div
                   key={`item-${index}`}
