@@ -1,21 +1,18 @@
 import React from "react";
 import BackspaceIcon from "../CustomIcons/Backspace";
-import { useStateContext } from "@/Context/StateContext";
-import { ActionTypes } from "@/Context/ActionTypes";
 import Messages from "./Conversation/Messages";
+import { useDispatch } from "react-redux";
+import { openOrCloseSidebar } from "../../../redux/slices/app";
 
 const StartedMessage = () => {
-  const { state, dispatch } = useStateContext();
+  const dispatch = useDispatch();
   return (
     <div className="w-[320px] bg-[#F8FAFF] h-screen dark:bg-[#182229]">
       <div className="flex items-center gap-3 h-[80px] px-[20px] shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
         <div
           className="cursor-pointer"
           onClick={() =>
-            dispatch({
-              type: ActionTypes.OPEN_SIDEBAR,
-              payload: { isOpen: true, type: "CONTACT" },
-            })
+            dispatch(openOrCloseSidebar({ isOpen: true, type: "CONTACT" }))
           }
         >
           <BackspaceIcon width={24} height={24} />

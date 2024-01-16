@@ -21,7 +21,11 @@ const CreateGroupFrom = () => {
     { value: "option2", label: "Option 2" },
     { value: "option3", label: "Option 3" },
   ];
-  const { handleSubmit, control } = useForm<InputFieldType>({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<InputFieldType>({
     resolver: yupResolver(schema) as any,
   });
 
@@ -47,9 +51,19 @@ const CreateGroupFrom = () => {
             control={control}
             defaultValue={[]}
             render={({ field }) => (
-              <Select {...field} isMulti options={Members} className="mt-[5px] bg-transparent"/>
+              <Select
+                {...field}
+                isMulti
+                options={Members}
+                className="mt-[5px] bg-transparent"
+              />
             )}
           />
+          {errors.members && (
+            <span className="text-[#FC6C62] text-[12px] leading-[16px] font-normal">
+              {errors?.members?.message?.toString()}
+            </span>
+          )}
         </div>
         <div className="flex justify-end w-full">
           <button className="w-[118px] h-[48px] bg-[#3366FF] text-white text-[15px] font-medium rounded-[8px]">

@@ -1,10 +1,10 @@
 "use client";
-import SpeedDial from "@/components/SpeedDial";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useTheme } from "next-themes";
+import SpeedDial from "@/components/SpeedDial";
 
 const MessageBar = () => {
   const { theme, setTheme } = useTheme();

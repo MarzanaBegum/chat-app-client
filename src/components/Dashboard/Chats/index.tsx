@@ -14,7 +14,7 @@ const Chats = () => {
         </h2>
         <CircleDashedIcon />
       </div>
-      <SearchInput />
+      <SearchInput isFunnel={true} />
       <div className="mt-[34px] flex gap-[13px] mb-[17px] pb-[10px] items-center border-b border-b-[#B4B4B4]">
         <Image
           src="/icons/archive-box.svg"

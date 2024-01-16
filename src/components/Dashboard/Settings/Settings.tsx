@@ -1,3 +1,4 @@
+"use client";
 import CaretDownIcon from "@/components/CustomIcons/CaretDownIcon";
 import ShortCutModal from "@/components/Modal/ShortCutModal";
 import Image from "next/image";

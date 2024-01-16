@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
+import ReduxStore from "../../redux/ReduxStore";
+import { Toaster } from "react-hot-toast";
+import ThemeProviders from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Chat App",
@@ -15,9 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <ThemeProvider>
-          <main>{children}</main>
-        </ThemeProvider>
+        <Toaster position="top-right" reverseOrder={false} gutter={8} />
+        <ReduxStore>
+          <ThemeProviders>
+            <main>{children}</main>
+          </ThemeProviders>
+        </ReduxStore>
       </body>
     </html>
   );

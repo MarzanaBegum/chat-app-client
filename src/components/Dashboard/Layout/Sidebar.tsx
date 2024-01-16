@@ -2,13 +2,14 @@
 import { sidebarNavListItems } from "@/utils/constants";
 import Image from "next/image";
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import classNames from "classnames";
 import ProfileMenu from "./ProfileMenu";
 
 const Sidebar = () => {
   const pathName = usePathname();
+  const router = useRouter();
   return (
     <>
       <div className="z-[99] min-h-screen w-[110px] hide-scroll bg-[#F0F4FA] dark:bg-[#161C24] flex justify-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
@@ -20,7 +21,8 @@ const Sidebar = () => {
               width="60"
               height="60"
               priority
-              className="w-[60px] h-[60px]"
+              className="w-[60px] h-[60px] cursor-pointer"
+              onClick={() => router.push("/dashboard/chats")}
             />
             <div className="mt-[15px] flex flex-col gap-6 items-center">
               {sidebarNavListItems.map((item, index) => (

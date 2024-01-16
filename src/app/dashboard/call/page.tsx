@@ -1,5 +1,5 @@
 "use client";
-import Chats from "@/components/Dashboard/Chats";
+import CallLog from "@/components/Dashboard/Call/CallLog";
 import Contact from "@/components/Dashboard/Contact";
 import Conversation from "@/components/Dashboard/Conversation";
 import SharedMessages from "@/components/Dashboard/SharedMessages/SharedMessages";
@@ -9,12 +9,12 @@ import classNames from "classnames";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const InitialChatPage = () => {
+const CallScreen = () => {
   const { isOpen, type } = useSelector((state: any) => state.app.sideBar);
   return (
     <DashboardLayout>
       <div className="flex flex-row h-screen overflow-hidden">
-        <Chats />
+        <CallLog />
         <div
           className={classNames(
             isOpen ? "w-[calc(100vw-750px)]" : "w-[calc(100vw-430px)]",
@@ -34,4 +34,4 @@ const InitialChatPage = () => {
   );
 };
 
-export default InitialChatPage;
+export default CallScreen;

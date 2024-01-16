@@ -1,11 +1,13 @@
-import { ActionTypes } from "@/Context/ActionTypes";
-import { useStateContext } from "@/Context/StateContext";
+"use client";
 import { iconsList } from "@/utils/constants";
 import Image from "next/image";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { openOrCloseSidebar } from "../../../../redux/slices/app";
 
 const ConversationHeader = () => {
-  const { state, dispatch } = useStateContext();
+  const dispatch = useDispatch();
+  const { isOpen, type } = useSelector((state: any) => state.app.sideBar);
   return (
     <div className="z-[99] h-[80px] bg-[#F8FAFF] dark:bg-[#111b21] shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
       <div className="px-[33px] py-[16px] flex justify-between items-center">
@@ -19,10 +21,9 @@ const ConversationHeader = () => {
                 height="47"
                 className="cursor-pointer w-[47px] h-[47px]"
                 onClick={() => {
-                  dispatch({
-                    type: ActionTypes.OPEN_SIDEBAR,
-                    payload: { isOpen: !state.sideBar.isOpen, type: "CONTACT" },
-                  });
+                  dispatch(
+                    openOrCloseSidebar({ isOpen: !isOpen, type: "CONTACT" })
+                  );
                 }}
               />
               <div className="w-[9px] h-[9px] absolute right-0 top-[35px] bg-[#76D45E] rounded-full"></div>

@@ -1,21 +1,20 @@
-"use client";
-import { ActionTypes } from "@/Context/ActionTypes";
-import { useStateContext } from "@/Context/StateContext";
 import CaretDownIcon from "@/components/CustomIcons/CaretDownIcon";
 import CrossIcon from "@/components/CustomIcons/CrossIcon";
 import NotificationIcon from "@/components/CustomIcons/NotificationIcon";
 import PhoneIcon from "@/components/CustomIcons/PhoneIcon";
 import StarIcon from "@/components/CustomIcons/StarIcon";
 import VideoCamIcon from "@/components/CustomIcons/VideoCamIcon";
-import NotificationToggle from "@/components/Shared/NotificationToggle";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import React, { useState } from "react";
 import BlockOrDeleteModal from "../Modal/BlockOrDeleteModal";
+import { useDispatch } from "react-redux";
+import { openOrCloseSidebar } from "../../../redux/slices/app";
+import NotificationToggle from "../Shared/NotificationToggle";
 
 const Contact = () => {
   const { theme, setTheme } = useTheme();
-  const { state, dispatch } = useStateContext();
+  const dispatch = useDispatch();
   const [openDelete, setOpenDelete] = useState(false);
   const [openBlock, setOpenBlock] = useState(false);
 
@@ -29,10 +28,7 @@ const Contact = () => {
         <div
           className="cursor-pointer"
           onClick={() =>
-            dispatch({
-              type: ActionTypes.OPEN_SIDEBAR,
-              payload: { isOpen: false, type: "CONTACT" },
-            })
+            dispatch(openOrCloseSidebar({ isOpen: false, type: "CONTACT" }))
           }
         >
           <CrossIcon color={theme === "light" ? "black" : "#FFFFFF"} />
@@ -58,7 +54,7 @@ const Contact = () => {
         <div className="flex gap-[72px] mt-[47px] justify-center">
           <div>
             <div className="mx-auto w-[24px] h-[24px]">
-              <VideoCamIcon />
+              <VideoCamIcon width={24} height={24} stroke="#4B4B4B" />
             </div>
             <h3 className="text-[14px] mt-[3px] text-[#000] dark:text-[#c5c2c2] font-semibold">
               Audio
@@ -89,10 +85,7 @@ const Contact = () => {
             <div
               className="flex items-center gap-[11px] cursor-pointer"
               onClick={() =>
-                dispatch({
-                  type: ActionTypes.OPEN_SIDEBAR,
-                  payload: { isOpen: true, type: "SHARED" },
-                })
+                dispatch(openOrCloseSidebar({ isOpen: true, type: "SHARED" }))
               }
             >
               <h2 className="text-[14px] text-[#5B96F7] font-medium">201</h2>
@@ -127,10 +120,7 @@ const Contact = () => {
           </div>
           <div
             onClick={() =>
-              dispatch({
-                type: ActionTypes.OPEN_SIDEBAR,
-                payload: { isOpen: true, type: "STARTED" },
-              })
+              dispatch(openOrCloseSidebar({ isOpen: true, type: "STARTED" }))
             }
             className="cursor-pointer"
           >

@@ -1,21 +1,22 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../Shared/InputField";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import api from "@/utils/api";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export type LoginInput = {
-  firstName: string;
-  lastName: string;
   email: string;
   password: string;
 };
 
 const schema = yup.object({
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
   email: yup.string().email().required(),
   password: yup
     .string()
@@ -27,11 +28,28 @@ const schema = yup.object({
 });
 
 const LoginForm = () => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, control } = useForm<LoginInput>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: LoginInput) => console.log(data);
+  const onSubmit = async (data: LoginInput) => {
+    try {
+      setIsLoading(true);
+      const response = await api.post("/auth/login", data, {
+        headers: { "Content-Type": "application/json" },
+      });
+      setIsLoading(false);
+      Cookies.set("token", response.data?.token);
+      toast.success(response.data?.message);
+      router.push("/dashboard/chats");
+    } catch (error: any) {
+      setIsLoading(false);
+      const err = error.response ? error.response.data.messages : error.message;
+      toast.error(err);
+    }
+  };
 
   return (
     <form
@@ -62,7 +80,7 @@ const LoginForm = () => {
         type="submit"
         className="w-full bg-[#161C24] text-[16px] font-medium text-white h-[50px] rounded-md"
       >
-        Login
+        {isLoading ? "Loading..." : "Login"}
       </button>
     </form>
   );

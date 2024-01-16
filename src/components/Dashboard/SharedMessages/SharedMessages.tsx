@@ -1,5 +1,3 @@
-import { ActionTypes } from "@/Context/ActionTypes";
-import { useStateContext } from "@/Context/StateContext";
 import React, { useState } from "react";
 import BackspaceIcon from "../../CustomIcons/Backspace";
 import { Shared_docs, Shared_links, sharedTabData } from "@/utils/constants";
@@ -7,9 +5,11 @@ import classNames from "classnames";
 import SharedMedia from "./SharedMedia";
 import LinkMsg from "../Conversation/MessagesType/LinkMsg";
 import DocMsg from "../Conversation/MessagesType/DocMsg";
+import { useDispatch } from "react-redux";
+import { openOrCloseSidebar } from "../../../../redux/slices/app";
 
 const SharedMessages = () => {
-  const { state, dispatch } = useStateContext();
+  const dispatch = useDispatch();
   const [tabTitle, setTabTitle] = useState("media");
   return (
     <div className="w-[320px] bg-[#F8FAFF] h-screen dark:bg-[#182229]">
@@ -17,10 +17,7 @@ const SharedMessages = () => {
         <div
           className="cursor-pointer"
           onClick={() =>
-            dispatch({
-              type: ActionTypes.OPEN_SIDEBAR,
-              payload: { isOpen: true, type: "CONTACT" },
-            })
+            dispatch(openOrCloseSidebar({ isOpen: true, type: "CONTACT" }))
           }
         >
           <BackspaceIcon width={24} height={24} />

@@ -1,4 +1,5 @@
 import React from "react";
+import CustomModal from "./CustomModal";
 
 interface ShortCutModalProps {
   isOpen: boolean;
@@ -97,44 +98,39 @@ const ShortCutModal: React.FC<ShortCutModalProps> = ({
     },
   ];
   return (
-    <>
-      {isOpen && (
-        <div className="z-[9999999] fixed inset-0 flex items-center justify-center">
-          <div className="fixed inset-0 bg-black opacity-50 w-full h-screen"></div>
-          <div className="bg-white p-6 rounded-2xl z-10  w-[calc(100vw-40px)] max-w-[956px] max-h-[566px] hide-scroll">
-            <h2 className="text-[16px] font-bold leading-[21.86px] mb-[20px] text-[#424242]">
-              Keyboard Shortcuts
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-[20px] gap-x-[40px]">
-              {list.map((listItem, i) => (
-                <div key={`item-${i}`} className="flex justify-between gap-2">
-                  <h2 className="text-[14px] font-bold leading-[19.12px] text-[#515151]">
-                    {listItem.title}
-                  </h2>
-                  <div className="flex gap-[10px] flex-wrap justify-end">
-                    {listItem.combination.map((item, i) => (
-                      <div key={`item-${i}`}>
-                        <button className="w-[67px] h-[22px] text-[14px] text-[#515151] rounded-[4px] bg-[#F3F3F3] border border-[#515151]">
-                          {item}
-                        </button>
-                      </div>
-                    ))}
+    <CustomModal isOpen={isOpen}>
+      <div className="bg-white p-6 rounded-lg z-10  w-[calc(100vw-40px)] max-w-[900px] max-h-[566px] hide-scroll">
+        <h2 className="text-[16px] font-bold leading-[21.86px] mb-[20px] text-[#424242]">
+          Keyboard Shortcuts
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-[20px] gap-x-[40px]">
+          {list.map((listItem, i) => (
+            <div key={`item-${i}`} className="flex justify-between gap-2">
+              <h2 className="text-[14px] font-bold leading-[19.12px] text-[#515151]">
+                {listItem.title}
+              </h2>
+              <div className="flex gap-[10px] flex-wrap justify-end">
+                {listItem.combination.map((item, i) => (
+                  <div key={`item-${i}`}>
+                    <button className="w-[67px] h-[22px] text-[14px] text-[#515151] rounded-[4px] bg-[#F3F3F3] border border-[#515151]">
+                      {item}
+                    </button>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-            <div className="flex justify-end mt-[15px]">
-              <button
-                className="bg-[#3366FF] w-[83px] h-[30px] text-[13px] font-bold rounded-[8px] text-white"
-                onClick={handleOnClose}
-              >
-                OK
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
-      )}
-    </>
+        <div className="flex justify-end mt-[15px]">
+          <button
+            className="bg-[#3366FF] w-[83px] h-[30px] text-[13px] font-bold rounded-[8px] text-white"
+            onClick={handleOnClose}
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </CustomModal>
   );
 };
 

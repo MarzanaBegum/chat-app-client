@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import ToggleButton from "../ToggleButton";
+import ToggleButton from "../../Shared/ToggleButton";
 import ProfileMenuItem from "./ProfileMenuItem";
 
 const ProfileMenu = () => {

@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../Shared/InputField";
+import toast from "react-hot-toast";
+import api from "@/utils/api";
 
 export type RegisterInput = {
   firstName: string;
@@ -26,12 +28,26 @@ const schema = yup.object({
 });
 
 const RegisterForm = () => {
-  const {
-    handleSubmit,
-    control,
-  } = useForm<RegisterInput>({ resolver: yupResolver(schema) });
+  const [isLoading, setIsLoading] = useState(false);
+  const { handleSubmit, control } = useForm<RegisterInput>({
+    resolver: yupResolver(schema),
+  });
 
-  const onSubmit = (data: RegisterInput) => console.log(data);
+  const onSubmit = async (data: RegisterInput) => {
+    try {
+      setIsLoading(true);
+      const response = await api.post("/auth/register", data, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log(response, "response....");
+      setIsLoading(false);
+      toast.success(response.data?.message);
+    } catch (error: any) {
+      setIsLoading(false);
+      const err = error.response ? error.response.data.messages : error.message;
+      toast.error(err);
+    }
+  };
 
   return (
     <form
@@ -69,7 +85,7 @@ const RegisterForm = () => {
         type="submit"
         className="w-full bg-[#161C24] text-[16px] font-medium text-white h-[50px] rounded-md"
       >
-        Create Account
+        {isLoading ? "Loading..." : "Create Account"}
       </button>
     </form>
   );

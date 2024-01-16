@@ -1,5 +1,4 @@
 import Avatar from "@/components/CustomIcons/Avatar";
-import CallIcon from "@/components/CustomIcons/CallIcon";
 import CaretDownIcon from "@/components/CustomIcons/CaretDownIcon";
 import ChatsIcon from "@/components/CustomIcons/ChatsIcon";
 import GroupIcon from "@/components/CustomIcons/GroupIcon";
@@ -19,7 +18,7 @@ export const sidebarNavListItems = [
     link: "/dashboard/group",
   },
   {
-    Icon: CallIcon,
+    Icon: PhoneIcon,
     link: "/dashboard/call",
   },
   {
@@ -380,5 +379,157 @@ export const Chat_History = [
     message: "Yep, I can also do that",
     incoming: false,
     outgoing: true,
+  },
+];
+
+export const CallList = [
+  {
+    id: 0,
+    img: "/assets/images/avatar.png",
+    name: "Cute Turtle",
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 1,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+    incoming: false,
+    missed: true,
+  },
+  {
+    id: 2,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+    incoming: true,
+    missed: true,
+  },
+  {
+    id: 3,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+  {
+    id: 4,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 5,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+  {
+    id: 6,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 7,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+  {
+    id: 8,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 9,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+  {
+    id: 10,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+  {
+    id: 11,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+    incoming: false,
+    missed: false,
+  },
+  {
+    id: 12,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+    incoming: true,
+    missed: false,
+  },
+];
+
+export const membersList = [
+  {
+    id: 0,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+  },
+  {
+    id: 1,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+  },
+  {
+    id: 2,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+  },
+  {
+    id: 3,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+  },
+  {
+    id: 4,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: true,
+  },
+  {
+    id: 5,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
+  },
+  {
+    id: 6,
+    img: "/assets/images/avatar.png",
+    name: "Dinesh",
+    online: false,
   },
 ];
