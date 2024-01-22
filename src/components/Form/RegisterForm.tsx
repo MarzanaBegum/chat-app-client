@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../Shared/InputField";
 import toast from "react-hot-toast";
 import api from "@/utils/api";
+import ReusableButton from "../Shared/ReusableButton";
 
 export type RegisterInput = {
   firstName: string;
@@ -81,12 +82,7 @@ const RegisterForm = () => {
         isPassword={true}
         placeholder="Enter your password"
       />
-      <button
-        type="submit"
-        className="w-full bg-[#161C24] text-[16px] font-medium text-white h-[50px] rounded-md"
-      >
-        {isLoading ? "Loading..." : "Create Account"}
-      </button>
+      <ReusableButton title="Create Account" loading={isLoading} />
     </form>
   );
 };

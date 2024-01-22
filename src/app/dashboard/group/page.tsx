@@ -4,7 +4,7 @@ import Conversation from "@/components/Dashboard/Conversation";
 import GroupSidebar from "@/components/Dashboard/Group/GroupSidebar";
 import SharedMessages from "@/components/Dashboard/SharedMessages/SharedMessages";
 import StartedMessage from "@/components/Dashboard/StartedMessage";
-import DashboardLayout from "@/components/Dashboard/Layout/DashboardLayout";
+// import DashboardLayout from "@/components/Dashboard/Layout/DashboardLayout";
 import classNames from "classnames";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 const GroupScreen = () => {
   const { isOpen, type } = useSelector((state: any) => state.app.sideBar);
   return (
-    <DashboardLayout>
+    // <DashboardLayout>
       <div className="flex flex-row h-screen overflow-hidden">
         <GroupSidebar />
         <div
@@ -30,7 +30,7 @@ const GroupScreen = () => {
           (isOpen && type === "STARTED" && <StartedMessage />)
         )}
       </div>
-    </DashboardLayout>
+    // </DashboardLayout>
   );
 };
 

@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../Shared/InputField";
+import ReusableButton from "../Shared/ReusableButton";
 
 export type ResetPasswordInput = {
   password: string;
@@ -25,6 +26,7 @@ const schema = yup.object({
 });
 
 const NewPasswordForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, control } = useForm<ResetPasswordInput>({
     resolver: yupResolver(schema),
   });
@@ -50,12 +52,7 @@ const NewPasswordForm = () => {
         isPassword={true}
         placeholder="Enter Your Password"
       />
-      <button
-        type="submit"
-        className="w-full bg-[#161C24] text-[16px] font-medium text-white h-[50px] rounded-md"
-      >
-        Submit
-      </button>
+      <ReusableButton title="Submit" loading={isLoading} />
     </form>
   );
 };

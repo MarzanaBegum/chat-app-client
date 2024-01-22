@@ -4,7 +4,6 @@ import Contact from "@/components/Dashboard/Contact";
 import Conversation from "@/components/Dashboard/Conversation";
 import SharedMessages from "@/components/Dashboard/SharedMessages/SharedMessages";
 import StartedMessage from "@/components/Dashboard/StartedMessage";
-import DashboardLayout from "@/components/Dashboard/Layout/DashboardLayout";
 import classNames from "classnames";
 import React from "react";
 import { useSelector } from "react-redux";
@@ -12,7 +11,6 @@ import { useSelector } from "react-redux";
 const InitialChatPage = () => {
   const { isOpen, type } = useSelector((state: any) => state.app.sideBar);
   return (
-    <DashboardLayout>
       <div className="flex flex-row h-screen overflow-hidden">
         <Chats />
         <div
@@ -30,7 +28,6 @@ const InitialChatPage = () => {
           (isOpen && type === "STARTED" && <StartedMessage />)
         )}
       </div>
-    </DashboardLayout>
   );
 };
 

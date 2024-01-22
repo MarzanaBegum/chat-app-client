@@ -7,9 +7,11 @@ import InputField from "../Shared/InputField";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import api from "@/utils/api";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import ReusableButton from "../Shared/ReusableButton";
+import { logIn } from "../../../redux/slices/auth";
+import { useDispatch } from "react-redux";
 
 export type LoginInput = {
   email: string;
@@ -28,6 +30,7 @@ const schema = yup.object({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, control } = useForm<LoginInput>({
@@ -41,6 +44,7 @@ const LoginForm = () => {
         headers: { "Content-Type": "application/json" },
       });
       setIsLoading(false);
+      dispatch(logIn({ token: response.data?.token }));
       Cookies.set("token", response.data?.token);
       toast.success(response.data?.message);
       router.push("/dashboard/chats");
@@ -76,12 +80,7 @@ const LoginForm = () => {
           </h3>
         </Link>
       </div>
-      <button
-        type="submit"
-        className="w-full bg-[#161C24] text-[16px] font-medium text-white h-[50px] rounded-md"
-      >
-        {isLoading ? "Loading..." : "Login"}
-      </button>
+      <ReusableButton title="Login" loading={isLoading} />
     </form>
   );
 };

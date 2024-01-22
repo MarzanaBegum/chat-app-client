@@ -193,6 +193,11 @@ export const sharedTabData = [
   { id: 1, title: "Links", link: "links" },
   { id: 2, title: "Docs", link: "docs" },
 ];
+export const friendTabData = [
+  { id: 0, title: "Explore", link: "explore" },
+  { id: 1, title: "Friends", link: "friend" },
+  { id: 2, title: "Requests", link: "request" },
+];
 
 export const Shared_docs = [
   {

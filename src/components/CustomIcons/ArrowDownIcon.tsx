@@ -17,16 +17,16 @@ const ArrowDownIcon = (props: IconType) => {
           <path
             d="M4 12L12 4"
             stroke={stroke}
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M5.5 4H12V10.5"
             stroke={stroke}
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       )}
