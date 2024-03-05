@@ -8,7 +8,6 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import api from "@/utils/api";
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie";
 import ReusableButton from "../Shared/ReusableButton";
 import { logIn } from "../../../redux/slices/auth";
 import { useDispatch } from "react-redux";
@@ -44,8 +43,9 @@ const LoginForm = () => {
         headers: { "Content-Type": "application/json" },
       });
       setIsLoading(false);
-      dispatch(logIn({ token: response.data?.token }));
-      Cookies.set("token", response.data?.token);
+      dispatch(
+        logIn({ token: response.data?.token, user_id: response.data?.userId })
+      );
       toast.success(response.data?.message);
       router.push("/dashboard/chats");
     } catch (error: any) {

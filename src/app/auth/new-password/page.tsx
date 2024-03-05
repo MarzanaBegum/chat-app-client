@@ -9,14 +9,14 @@ const NewPassword = () => {
     <div className="flex flex-col h-screen w-full justify-center items-center">
       <div className="w-[100%] lg:w-[50%] px-[20px]">
         <Image
-          src="/icons/whatsapp.svg"
+          src="/icons/live-chat.svg"
           alt="whatsapp"
           width="0"
           height="0"
           priority
-          className="mx-auto w-[120px] h-[120px]"
+          className="mx-auto w-[90px] h-[90px]"
         />
-        <div>
+        <div className="mt-6">
           <h2 className="text-[#161C24] text-[16px] font-medium">
             Reset password?
           </h2>

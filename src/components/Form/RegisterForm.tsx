@@ -7,6 +7,9 @@ import InputField from "../Shared/InputField";
 import toast from "react-hot-toast";
 import api from "@/utils/api";
 import ReusableButton from "../Shared/ReusableButton";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { updateRegisterEmail } from "../../../redux/slices/auth";
 
 export type RegisterInput = {
   firstName: string;
@@ -29,6 +32,8 @@ const schema = yup.object({
 });
 
 const RegisterForm = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { handleSubmit, control } = useForm<RegisterInput>({
     resolver: yupResolver(schema),
@@ -40,12 +45,15 @@ const RegisterForm = () => {
       const response = await api.post("/auth/register", data, {
         headers: { "Content-Type": "application/json" },
       });
-      console.log(response, "response....");
       setIsLoading(false);
+      dispatch(updateRegisterEmail({ email: data.email }));
       toast.success(response.data?.message);
+      router.push("/auth/verify");
     } catch (error: any) {
       setIsLoading(false);
-      const err = error.response ? error.response.data.messages : error.message;
+      const err = error.response
+        ? error.response?.data.messages
+        : error.message;
       toast.error(err);
     }
   };

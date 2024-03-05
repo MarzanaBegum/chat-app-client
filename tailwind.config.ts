@@ -13,6 +13,8 @@ const config: Config = {
         primary: "Manrope, Public Sans, sans-serif",
       },
       colors: {
+        "bubble-meta": "hsla(0,0%,100%,0.6)",
+        "icon-ack": "#53bdeb",
         "primary-lighter": "#C8FACD",
         "primary-light": "#5BE584",
         "primary-main": "#0162C4",

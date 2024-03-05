@@ -1,12 +1,14 @@
 import { message_options } from "@/utils/constants";
 import classNames from "classnames";
 import React from "react";
+import Cookies from "js-cookie";
 
 const MessageMenu = ({ item }: any) => {
+  const user_id = Cookies.get("user_id");
   return (
     <div
       className={classNames(
-        item.incoming ? "left-0" : "right-0",
+        item.from === user_id ? "right-0" : "left-0",
         "absolute bg-[#FFFFFF] dark:bg-[#182229] z-10 w-[180px] rounded-lg"
       )}
     >

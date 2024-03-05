@@ -16,15 +16,15 @@ const Sidebar = () => {
         <div className="flex flex-col justify-between gap-[20px] py-[25px]">
           <div>
             <Image
-              src="/icons/whatsapp.svg"
+              src="/icons/live-chat.svg"
               alt="logo"
-              width="60"
-              height="60"
+              width="40"
+              height="40"
               priority
-              className="w-[60px] h-[60px] cursor-pointer"
+              className="w-[40px] h-[40px] mx-auto cursor-pointer"
               onClick={() => router.push("/dashboard/chats")}
             />
-            <div className="mt-[15px] flex flex-col gap-6 items-center">
+            <div className="mt-[20px] flex flex-col gap-6 items-center">
               {sidebarNavListItems.map((item, index) => (
                 <div
                   key={`item-${index}`}

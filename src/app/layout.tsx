@@ -7,6 +7,9 @@ import ThemeProviders from "@/components/ThemeProvider";
 export const metadata: Metadata = {
   title: "Chat App",
   description: "Real world chat application",
+  icons: {
+    icon: [{ url: "/icons/live-chat.svg", href: "/icons/live-chat.svg" }],
+  },
 };
 
 export default function RootLayout({

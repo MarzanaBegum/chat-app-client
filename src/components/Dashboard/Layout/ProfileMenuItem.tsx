@@ -1,15 +1,29 @@
 import { profileMenu } from "@/utils/constants";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { signOut } from "../../../../redux/slices/auth";
+import { socket } from "@/socket";
+import Cookies from "js-cookie";
 
-const ProfileMenuItem = () => {
+interface ProfilePropsType {
+  setOpenMenu: (isOpen: boolean) => void;
+}
+
+const ProfileMenuItem = ({ setOpenMenu }: ProfilePropsType) => {
+  const user_id = Cookies.get("user_id");
+  const dispatch = useDispatch();
   const router = useRouter();
-  
+
   const handleClick = (type: string) => {
     const lowerCaseType = type.toLowerCase();
     if (lowerCaseType !== "logout") {
       router.push(lowerCaseType);
+    } else {
+      socket.emit("end", { user_id });
+      dispatch(signOut());
     }
+    setOpenMenu(false);
   };
 
   return (

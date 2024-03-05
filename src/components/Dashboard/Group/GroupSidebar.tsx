@@ -33,17 +33,17 @@ const GroupSidebar = () => {
             Pinned
           </h2>
           <div className="flex gap-[18px] flex-col">
-            {ChatList.filter((element) => element.pinned).map((ele) => {
+            {/* {ChatList.filter((element) => element.pinned).map((ele) => {
               return <ChatElement key={ele.id} chatElementData={ele} />;
-            })}
+            })} */}
           </div>
           <h2 className="text-[16px] my-[20px] font-bold text-[#676667] dark:text-[#FFF]">
             All Chats
           </h2>
           <div className="flex gap-[18px] flex-col mb-[12px]">
-            {ChatList.filter((element) => !element.pinned).map((ele) => {
+            {/* {ChatList.filter((element) => !element.pinned).map((ele) => {
               return <ChatElement key={ele.id} chatElementData={ele} />;
-            })}
+            })} */}
           </div>
         </div>
       </div>

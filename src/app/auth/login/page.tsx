@@ -9,8 +9,8 @@ const LoginPage = () => {
     <div className="flex flex-col h-screen w-full justify-center items-center">
       <div className="w-[100%] lg:w-[50%] px-[20px]">
         <Image
-          src="/icons/whatsapp.svg"
-          alt="whatsapp"
+          src="/icons/live-chat.svg"
+          alt="live-chat"
           width="0"
           height="0"
           priority

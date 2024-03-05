@@ -1,31 +1,44 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import InputField from "../Shared/InputField";
+import { useSelector } from "react-redux";
 
 export type ProfileInput = {
-  name: string;
+  firstName: string;
+  lastName: string;
   about: string;
-  avatarUrl: string;
+  // avatar: string;
 };
 
 const schema = yup.object({
-  name: yup.string().required("Name is required"),
+  firstName: yup.string().required("First Name is required"),
+  lastName: yup.string().required("Last Name is required"),
   about: yup.string().required("About is required"),
-  avatarUrl: yup.string().required("Avatar is required"),
+  // avatar: yup.string().required("Avatar is required"),
 });
 
 const ProfileForm = () => {
+  const { firstName, lastName, _id, about, avatar } = useSelector(
+    (state: any) => state.auth.user
+  );
   const {
     handleSubmit,
     control,
     register,
+    setValue,
     formState: { errors },
   } = useForm<ProfileInput>({
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    setValue("firstName", firstName);
+    setValue("lastName", lastName);
+    setValue("about", about);
+  }, [firstName, lastName, setValue]);
 
   const onSubmit = (data: ProfileInput) => console.log("data.....", data);
 
@@ -35,10 +48,16 @@ const ProfileForm = () => {
       className="flex gap-[15px] flex-col"
     >
       <InputField
-        label="Name"
-        name="name"
+        label="First Name"
+        name="firstName"
         control={control}
-        placeholder="Enter Your Name"
+        placeholder="Enter Your first Name"
+      />
+      <InputField
+        label="Last Name"
+        name="lastName"
+        control={control}
+        placeholder="Enter Your last Name"
       />
       <div>
         <label className="block text-[#252C48] dark:text-[#c5c2c2] text-sm xl:text-base leading-[1.5] font-medium">

@@ -1,22 +1,31 @@
 import classNames from "classnames";
 import React from "react";
+import Cookies from "js-cookie";
+import formatTimestamp from "@/utils/FormatDate";
+import MessageStatus from "./MessageStatus";
 
 const TextMsg = ({ element }: any) => {
+  const user_id = Cookies.get("user_id");
   return (
     <div
       className={classNames(
-        element.incoming ? "bg-[#FFFFFF] dark:bg-[#161C24]" : "bg-[#5B96F7]",
-        "px-4 max-w-[60%] py-[7px] rounded-lg"
+        element.from === user_id
+          ? "text-[#FFFFFF] bg-[#5B96F7]"
+          : "text-[#696969] dark:text-[#c5c2c2] bg-[#FFFFFF] dark:bg-[#161C24]",
+        "rounded-md px-2 py-[5px] flex justify-end items-center gap-2 max-w-[40%]"
       )}
     >
-      <span
-        className={classNames(
-          element.incoming ? "text-[#696969] dark:text-[#c5c2c2]" : "text-[#FFFFFF]",
-          "break-all text-[14px] font-semibold"
-        )}
-      >
-        {element.message}
-      </span>
+      <span className="break-all text-sm font-semibold">{element.text}</span>
+      <div className="flex gap-1 justify-end">
+        <span className=" text-[11px] min-w-fit">
+          {formatTimestamp(element.date)}
+        </span>
+        <span>
+          {element.from === user_id && (
+            <MessageStatus messageStatus={element.message_status} />
+          )}
+        </span>
+      </div>
     </div>
   );
 };

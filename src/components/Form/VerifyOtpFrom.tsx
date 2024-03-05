@@ -5,6 +5,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Controller, FieldErrors, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import ReusableButton from "../Shared/ReusableButton";
+import api from "@/utils/api";
+import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../../../redux/slices/auth";
 
 interface OTPType {
   code1: string;
@@ -25,6 +29,9 @@ const schema = yup.object({
 });
 
 const VerifyOtpFrom = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { email } = useSelector((state: any) => state.auth.user);
   const [isLoading, setIsLoading] = useState(false);
   const {
     handleSubmit,
@@ -39,11 +46,14 @@ const VerifyOtpFrom = () => {
     return errors[key]?.message;
   };
   const onSubmit = async (data: OTPType) => {
-    console.log(data);
     try {
       setIsLoading(true);
-
+      const otp = Object.values(data).join("").toString();
+      const res = await api.post("/auth/verify-otp", { email, otp });
       setIsLoading(false);
+      dispatch(logIn({ token: res.data?.token, user_id: res.data?.userId }));
+      router.push("/dashboard/chats");
+      toast.success(res.data?.message);
     } catch (error: any) {
       setIsLoading(false);
       const err = error.response ? error.response.data.messages : error.message;

@@ -1,5 +1,6 @@
 import api from "@/utils/api";
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
 
 interface AppStateType {
   sideBar: {
@@ -9,13 +10,19 @@ interface AppStateType {
   users: [];
   friends: [];
   friendRequests: [];
+  chat_type: string;
+  room_id: string;
 }
+
+const token = Cookies.get("token")
 
 const initialState: AppStateType = {
   sideBar: { isOpen: false, type: "CONTACT" },
   users: [],
   friends: [],
   friendRequests: [],
+  chat_type: "",
+  room_id: "",
 };
 
 const slice = createSlice({
@@ -35,10 +42,14 @@ const slice = createSlice({
     updateFriendRequests: (state, action) => {
       state.friendRequests = action.payload.friendRequests;
     },
+    updateSelectConversation: (state, action) => {
+      state.chat_type = "individual";
+      state.room_id = action.payload.room_id;
+    },
   },
 });
 
-export const { openOrCloseSidebar } = slice.actions;
+export const { openOrCloseSidebar,updateSelectConversation } = slice.actions;
 export default slice.reducer;
 
 export function FetchUsers(): any {
@@ -47,7 +58,7 @@ export function FetchUsers(): any {
       .get("/user/get-users", {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${getState().auth.token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response: any) => {
@@ -64,7 +75,7 @@ export function FetchFriends(): any {
       .get("/user/get-friends", {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${getState().auth.token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response: any) => {
@@ -81,11 +92,10 @@ export function FetchFriendRequests(): any {
       .get("/user/get-friend-request", {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${getState().auth.token}`,
+          Authorization: `Bearer ${token}`,
         },
       })
       .then((response: any) => {
-        console.log(response);
         dispatch(
           slice.actions.updateFriendRequests({
             friendRequests: response.data.data,
@@ -97,3 +107,4 @@ export function FetchFriendRequests(): any {
       });
   };
 }
+

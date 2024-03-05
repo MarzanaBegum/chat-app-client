@@ -10,21 +10,21 @@ import RequestsList from "../Dashboard/Friends/RequestsList";
 
 interface FriendModalProps {
   isOpen: boolean;
-  handleOnClose: () => void;
+  setOpenModal: (isOpen: boolean) => void;
 }
 
-const FriendModal: React.FC<FriendModalProps> = ({ isOpen, handleOnClose }) => {
+const FriendModal: React.FC<FriendModalProps> = ({ isOpen, setOpenModal }) => {
   const { theme, setTheme } = useTheme();
   const [tabTitle, setTabTitle] = useState("explore");
   return (
     <CustomModal isOpen={isOpen}>
-      <div className="bg-white dark:bg-[#111b21] p-6 rounded-lg z-10 w-[calc(100vw-40px)] max-w-[500px]">
+      <div className="bg-white dark:bg-[#111b21] p-6 rounded-lg z-10 w-[calc(100vw-40px)] max-w-[500px] min-h-[60vh]">
         <div className="flex justify-end">
-          <div onClick={handleOnClose} className="cursor-pointer">
+          <div onClick={() => setOpenModal(false)} className="cursor-pointer">
             <CrossIcon color={theme === "light" ? "black" : "#FFFFFF"} />
           </div>
         </div>
-        <div className="flex gap-[40px]">
+        <div className="flex gap-[15px] lg:gap-[40px] mb-[25px]">
           {friendTabData.map((item, i) => (
             <h3
               key={`item-${i}`}
@@ -40,9 +40,11 @@ const FriendModal: React.FC<FriendModalProps> = ({ isOpen, handleOnClose }) => {
             </h3>
           ))}
         </div>
-        {tabTitle === "explore" && <UserList />}
-        {tabTitle === "friend" && <FriendsList />}
-        {tabTitle === "request" && <RequestsList />}
+        {tabTitle === "explore" && <UserList setOpenModal={setOpenModal}/>}
+        {tabTitle === "friend" && (
+          <FriendsList setOpenModal={setOpenModal} />
+        )}
+        {tabTitle === "request" && <RequestsList setOpenModal={setOpenModal}/>}
       </div>
     </CustomModal>
   );
