@@ -101,8 +101,6 @@ const slice = createSlice({
       state.direct_chat.current_message = message_list;
     },
     addDirectMessages(state, action) {
-      console.log(action.payload);
-
       state.direct_chat.current_message.push(action.payload);
     },
   },
@@ -116,4 +114,5 @@ export const {
   fetchCurrentMessages,
   addDirectMessages,
 } = slice.actions;
+
 export default slice.reducer;

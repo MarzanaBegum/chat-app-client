@@ -29,14 +29,17 @@ const Messages = ({ menu }: MessagePropsType) => {
 
   useEffect(() => {
     const current = conversations.find((ele: any) => ele._id === room_id);
+    dispatch(setCurrentConversation(current));
     socket?.emit(
       "get_messages",
-      { conversation_id: current_conversation._id },
+      {
+        conversation_id: current_conversation._id,
+        to: current_conversation.user_id,
+      },
       (data: any) => {
         dispatch(fetchCurrentMessages(data));
       }
     );
-    dispatch(setCurrentConversation(current));
   }, [current_conversation]);
 
   return (

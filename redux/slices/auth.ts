@@ -77,7 +77,8 @@ export function GetUserInfo(): any {
         dispatch(slice.actions.updateUserInfo({ user: response.data }));
       })
       .catch((error: any) => {
-        console.log(error, "error");
+        const err = error.response ? error.response.data.messages : error.message;
+        console.log(err)
       });
   };
 }

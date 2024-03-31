@@ -12,11 +12,11 @@ const TextMsg = ({ element }: any) => {
         element.from === user_id
           ? "text-[#FFFFFF] bg-[#5B96F7]"
           : "text-[#696969] dark:text-[#c5c2c2] bg-[#FFFFFF] dark:bg-[#161C24]",
-        "rounded-md px-2 py-[5px] flex justify-end items-center gap-2 max-w-[40%]"
+        "rounded-md px-2 py-[5px] flex justify-end items-center gap-2 max-w-[60%]"
       )}
     >
       <span className="break-all text-sm font-semibold">{element.text}</span>
-      <div className="flex gap-1 justify-end">
+      <div className="flex gap-1 justify-end items-end">
         <span className=" text-[11px] min-w-fit">
           {formatTimestamp(element.date)}
         </span>

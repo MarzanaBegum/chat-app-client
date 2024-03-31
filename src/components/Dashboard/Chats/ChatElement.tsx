@@ -54,17 +54,7 @@ const ChatElement = ({ data }: any) => {
               <h2 className="text-[16px] font-extrabold text-[#030303] dark:text-[#FFF] truncate w-[90px]">
                 {data.name}
               </h2>
-              <div className="flex items-center mt-[4px]">
-                <h2
-                  className={classNames(
-                    room_id === data._id
-                      ? "text-white"
-                      : "text-[#7C7C7D] dark:text-[#c5c2c2]",
-                    "text-[14px] font-semibold truncate w-[90px]"
-                  )}
-                >
-                  {lastMsgDetail && lastMsgDetail?.text}
-                </h2>
+              <div className="flex gap-1 items-center mt-[4px]">
                 <span
                   className={classNames(
                     room_id === data._id
@@ -78,6 +68,16 @@ const ChatElement = ({ data }: any) => {
                     />
                   )}
                 </span>
+                <h2
+                  className={classNames(
+                    room_id === data._id
+                      ? "text-white"
+                      : "text-[#7C7C7D] dark:text-[#c5c2c2]",
+                    "text-[14px] font-semibold truncate w-[90px]"
+                  )}
+                >
+                  {lastMsgDetail && lastMsgDetail?.text}
+                </h2>
               </div>
             </div>
           </div>

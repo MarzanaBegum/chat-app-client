@@ -1,6 +1,7 @@
 import api from "@/utils/api";
 import { createSlice } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 interface AppStateType {
   sideBar: {
@@ -14,7 +15,7 @@ interface AppStateType {
   room_id: string;
 }
 
-const token = Cookies.get("token")
+const token = Cookies.get("token");
 
 const initialState: AppStateType = {
   sideBar: { isOpen: false, type: "CONTACT" },
@@ -49,7 +50,7 @@ const slice = createSlice({
   },
 });
 
-export const { openOrCloseSidebar,updateSelectConversation } = slice.actions;
+export const { openOrCloseSidebar, updateSelectConversation } = slice.actions;
 export default slice.reducer;
 
 export function FetchUsers(): any {
@@ -65,7 +66,10 @@ export function FetchUsers(): any {
         dispatch(slice.actions.updateUsers({ users: response.data.data }));
       })
       .catch((error: any) => {
-        console.log(error, "error");
+        const err = error.response
+          ? error.response.data.messages
+          : error.message;
+        toast.error(err);
       });
   };
 }
@@ -82,7 +86,10 @@ export function FetchFriends(): any {
         dispatch(slice.actions.updateFriends({ friends: response.data.data }));
       })
       .catch((error: any) => {
-        console.log(error, "error");
+        const err = error.response
+          ? error.response.data.messages
+          : error.message;
+        toast.error(err);
       });
   };
 }
@@ -103,8 +110,10 @@ export function FetchFriendRequests(): any {
         );
       })
       .catch((error: any) => {
-        console.log(error, "error");
+        const err = error.response
+          ? error.response.data.messages
+          : error.message;
+        toast.error(err);
       });
   };
 }
-

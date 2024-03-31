@@ -12,7 +12,7 @@ const Sidebar = () => {
   const router = useRouter();
   return (
     <>
-      <div className="z-[99] min-h-screen w-[110px] hide-scroll bg-[#F0F4FA] dark:bg-[#161C24] flex justify-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
+      <div className="z-[99] min-h-screen w-[110px] hide-scroll bg-[#F0F4FA] dark:bg-[#161C24] hidden lg:flex justify-center shadow-[0px_0px_4px_0px_rgba(0,0,0,0.25)]">
         <div className="flex flex-col justify-between gap-[20px] py-[25px]">
           <div>
             <Image
